@@ -16,7 +16,7 @@ class User:
         SERVER_STOPPED = 7
 
     async def __aenter__(self):
-        self.session = aiohttp.ClientSession()
+        self.session = aiohttp.ClientSession(cookie_jar=aiohttp.CookieJar(unsafe=True))
         return self
 
     async def __aexit__(self, exc_type, exc, tb):
