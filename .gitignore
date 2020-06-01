@@ -1,3 +1,4 @@
 loadtest_env
 .vscode
 __pycache__
+loadtest.log

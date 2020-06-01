@@ -4,6 +4,10 @@ from yarl import URL
 from enum import Enum
 import time
 import json
+import logging
+import logging.config
+logging.config.fileConfig(fname='logger.conf', disable_existing_loggers=False)
+logger = logging.getLogger(__name__)
 
 class User:
     class States(Enum):
@@ -45,16 +49,16 @@ class User:
         try:        
             response = await self.session.post(self.login_url, data={'username':self.username,'password':'password'}, allow_redirects=False)
         except Exception as e:
-            print('Error occured in logging') 
-        print('Login Response is',response.text)
+            logger.error('Error occured in logging') 
+        logger.debug('Login Response is {}'.format(response.text))
         if response.status!=302:
             raise Exception('Exception while logging in user!')
         else:
             self.state = User.States.LOGGED_IN
-        print('Loggin Sucessful for: '+self.username)
+        logger.info('Loggin Sucessful for: {} '.format(self.username))
         
     async def start_server(self):
-        print('Changed User State is:',self.state)
+        logger.debug('Changed User State is: {}'.format(self.state))
         assert self.state == User.States.LOGGED_IN
         spawner_timeout = 300
         spawner_refresh_time= 10
@@ -64,29 +68,29 @@ class User:
             try:
                 response = await self.session.get(self.spawn_url)
             except Exception as e:
-                print('Exception occured while starting server!')
-            print('Respose url is',str(response.url))
+                logger.error('Exception occured while starting server!')
+            logger.debug('Respose url is {}'.format(str(response.url)))
             if self.notebook_url+'/tree'== str(response.url):
-                print('Started Server Response is ',response.text)
+                logger.debug('Started Server Response is {}'.format(response.text))
                 self.state = User.States.SERVER_STARTED
                 break
-            print('Starting the server again!')
+            logger.critical('!!!!!!!! Starting the server again!!!!!!!! for {}'.format(self.username))
             spawner_end_time=time.time()-spawner_start_time
             if (spawner_timeout-spawner_end_time>=300):
-                print('Server cannot be started in 300 seconds i.e 5 minutes')
+                logger.critical('Server cannot be started in 300 seconds i.e 5 minutes')
             await asyncio.sleep(spawner_refresh_time)                
-        print('Server started for: '+self.username)
+        logger.info('Server started for: {} '.format(self.username))
 
     async def start_kernel(self):
         assert self.state == User.States.SERVER_STARTED
         try:
             response = await self.session.post(self.kernel_url, headers={'X-XSRFToken': self.xsrf_token})
         except Exception as e:
-            print('Exception occured while starting kernel')
+            logger.error('Exception occured while starting kernel')
         finally:
             self.kernel_id = (await response.json())['id']
         self.state = User.States.KERNEL_STARTED
-        print('Kernal started for: '+self.username)
+        logger.info('Kernal started for: {}'.format(self.username))
 
     @property
     def xsrf_token(self):
@@ -102,32 +106,32 @@ class User:
         ## 2) code that consumes average cpu and ram
         ## 3) code that consumes high cpu and ram
         self.state = User.States.CODE_EXECUTED
-        print('Code executed for: '+self.username)
+        logger.info('Code executed for: {}'.format(self.username))
 
     async def stop_kernel(self):
         assert self.state == User.States.CODE_EXECUTED
         try:
             response = await self.session.delete(self.kernel_url+'/'+self.kernel_id,headers={'X-XSRFToken': self.xsrf_token})
         except Exception as e:
-            print('Error occured while stopping kernel')
-        print('Kernal Stopped response: ',response.text)
+            logger.error('Error occured while stopping kernel')
+        logger.debug('Kernal Stopped response: {}'.format(response.text))
         if response.status!=204:
             raise Exception('Couldnt Stop the kernel properly!')
         self.state = User.States.KERNAL_STOPPED
-        print('Kernal stopped for: '+self.username)
+        logger.info('Kernal stopped for: {}'.format(self.username))
 
     async def stop_server(self):
         assert self.state == User.States.KERNAL_STOPPED
         try:
             response = await self.session.delete(self.server_url,headers={'Referer': str(self.base_url+'/hub/')})
         except Exception as e:
-            print('Exception occured while stopping server')
+            logger.error('Exception occured while stopping server')
         print('Server Get response is: ',response.text)
         if response.status==204:
-            print('Server stopped already!')
+            logger.debug('Server stopped already!')
         elif response.status==202:
-            print('Server is taking a while to stop gracefully')
+            logger.debug('Server is taking a while to stop gracefully')
         else:
             raise Exception('Coudnt stop the server as expected')  
         self.state = User.States.CLEAR
-        print('Server Stopped for: '+self.username)
+        logger.info('Server Stopped for: {}'.format(self.username))
