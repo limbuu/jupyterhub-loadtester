@@ -65,3 +65,10 @@ class ServerStopError(Error):
         self.message = "Exception occured while stopping server for"
     def __str__(self):
         return f'{self.message} -> {self.username}'
+
+class SimulationValueError(Error):
+    ''' Raise Value Error when the number for simulated user is less than or equal to zero '''
+    def __init__(self):
+        self.message = "The numbers of users for simulation should be greater or at least euqual to 1"
+    def __str__(self):
+        return f'{self.message}'

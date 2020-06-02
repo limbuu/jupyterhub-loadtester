@@ -8,6 +8,7 @@ import logging.config
 logging.config.fileConfig(fname='logger.conf', disable_existing_loggers=False)
 logger = logging.getLogger(__name__)
 import argparse
+from exception import SimulationValueError
 
 USERNAME_PREFIX = 'user'
 
@@ -30,6 +31,8 @@ if __name__=='__main__':
     parser.add_argument("hub_url",  help="this is hub url used for load testing purpose", type=str)
     parser.add_argument("user_count",  help="this is number of users for simulating in load testing environment", type=int)
     args = parser.parse_args()
+    if args.user_count <= 0:
+        raise SimulationValueError
     main(args.hub_url, args.user_count)
     logger.info('*************** Stopping the Jupyterhub Loadtesting ****************')
 
