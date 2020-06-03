@@ -1,59 +1,101 @@
-2020-06-02 15:02:41,339- __main__ - INFO - *************** Started the Jupyterhub Loadtesting ****************
-2020-06-02 15:02:41,340- __main__ - INFO - Hub Url is : http://localhost:9000 
-2020-06-02 15:02:41,340- __main__ - INFO - User count is : 2 
-2020-06-02 15:02:41,340- __main__ - INFO - user-1
-2020-06-02 15:02:41,341- __main__ - INFO - user-2
-2020-06-02 15:02:41,341- asyncio - DEBUG - Using selector: EpollSelector
-2020-06-02 15:02:41,341- simulator - WARNING - Hub Url is http://localhost:9000 - Username is: user-1 
-2020-06-02 15:02:41,342- user - DEBUG - User State is: States.CLEAR
-2020-06-02 15:02:41,343- simulator - WARNING - Hub Url is http://localhost:9000 - Username is: user-2 
-2020-06-02 15:02:41,343- user - DEBUG - User State is: States.CLEAR
-2020-06-02 15:02:41,375- user - DEBUG - Login Response is <bound method ClientResponse.text of <ClientResponse(http://localhost:9000/hub/login) [302 Found]>
-<CIMultiDictProxy('Server': 'TornadoServer/6.0.4', 'Content-Type': 'text/html', 'Date': 'Tue, 02 Jun 2020 09:17:41 GMT', 'x-jupyterhub-version': '1.2.0dev', 'Access-Control-Allow-Headers': 'accept, content-type, authorization', 'content-security-policy': "frame-ancestors 'self'; report-uri /hub/security/csp-report", 'Location': '/hub/spawn', 'Content-Length': '0', 'Set-Cookie': 'jupyterhub-services="2|1:0|10:1591089461|19:jupyterhub-services|44:YzQ2NmYxMDM4MWIwNDBkNWI4NzZiYzY3YmEyMWQ4ZWM=|d71e3147701acfb9f2af99ad007a7ba1900ca6bf66beebee9fb675a9209e0359"; expires=Thu, 02 Jul 2020 09:17:41 GMT; HttpOnly; Path=/services', 'Set-Cookie': 'jupyterhub-session-id=e63cfa977592488e8b9b44dfeda9bd0a; HttpOnly; Path=/', 'Set-Cookie': 'jupyterhub-hub-login="2|1:0|10:1591089461|20:jupyterhub-hub-login|44:YzQ2NmYxMDM4MWIwNDBkNWI4NzZiYzY3YmEyMWQ4ZWM=|8df179e48631ed42e7ba672b4456a40be5246d34396b791f1e0cc2d0446fdf69"; expires=Thu, 02 Jul 2020 09:17:41 GMT; HttpOnly; Path=/hub/', 'Connection': 'close')>
+2020-06-03 15:53:39,968- __main__ - INFO - *************** Started the Jupyterhub Loadtesting ****************
+2020-06-03 15:53:39,969- __main__ - INFO - Hub Url is : http://localhost:9000 
+2020-06-03 15:53:39,969- __main__ - INFO - User count is : 2 
+2020-06-03 15:53:39,969- __main__ - INFO - user-1
+2020-06-03 15:53:39,969- __main__ - INFO - user-2
+2020-06-03 15:53:39,970- asyncio - DEBUG - Using selector: EpollSelector
+2020-06-03 15:53:39,970- simulator - WARNING - Hub Url is http://localhost:9000 - Username is: user-1 
+2020-06-03 15:53:39,970- user - DEBUG - User State is: States.CLEAR
+2020-06-03 15:53:39,971- simulator - WARNING - Hub Url is http://localhost:9000 - Username is: user-2 
+2020-06-03 15:53:39,972- user - DEBUG - User State is: States.CLEAR
+2020-06-03 15:53:40,008- user - DEBUG - Login Response is <bound method ClientResponse.text of <ClientResponse(http://localhost:9000/hub/login) [302 Found]>
+<CIMultiDictProxy('Server': 'TornadoServer/6.0.4', 'Content-Type': 'text/html', 'Date': 'Wed, 03 Jun 2020 10:08:40 GMT', 'x-jupyterhub-version': '1.2.0dev', 'Access-Control-Allow-Headers': 'accept, content-type, authorization', 'content-security-policy': "frame-ancestors 'self'; report-uri /hub/security/csp-report", 'Location': '/user/user-1/', 'Content-Length': '0', 'Set-Cookie': 'jupyterhub-services="2|1:0|10:1591178920|19:jupyterhub-services|44:NGMzMjJhOTBiMmM4NDVjY2EwNTlkZTllZWRiMTQyMjU=|ccac40ee0362d93815dee42376564273d3fcd37a6fcf07bf9f92af7db8436996"; expires=Fri, 03 Jul 2020 10:08:40 GMT; HttpOnly; Path=/services', 'Set-Cookie': 'jupyterhub-session-id=02f5e74b4fe24e949ef2e2267a040068; HttpOnly; Path=/', 'Set-Cookie': 'jupyterhub-hub-login="2|1:0|10:1591178920|20:jupyterhub-hub-login|44:NGMzMjJhOTBiMmM4NDVjY2EwNTlkZTllZWRiMTQyMjU=|ec085eaa986c6c46833d4949b4e956d8ea65b7a3461dc97973dc449b27001c16"; expires=Fri, 03 Jul 2020 10:08:40 GMT; HttpOnly; Path=/hub/', 'Connection': 'close')>
 >
-2020-06-02 15:02:41,375- user - INFO - Loggin Sucessful for: user-2 
-2020-06-02 15:02:41,375- user - DEBUG - User State is: States.LOGGED_IN
-2020-06-02 15:02:41,388- user - DEBUG - Login Response is <bound method ClientResponse.text of <ClientResponse(http://localhost:9000/hub/login) [302 Found]>
-<CIMultiDictProxy('Server': 'TornadoServer/6.0.4', 'Content-Type': 'text/html', 'Date': 'Tue, 02 Jun 2020 09:17:41 GMT', 'x-jupyterhub-version': '1.2.0dev', 'Access-Control-Allow-Headers': 'accept, content-type, authorization', 'content-security-policy': "frame-ancestors 'self'; report-uri /hub/security/csp-report", 'Location': '/hub/spawn', 'Content-Length': '0', 'Set-Cookie': 'jupyterhub-services="2|1:0|10:1591089461|19:jupyterhub-services|44:NGMzMjJhOTBiMmM4NDVjY2EwNTlkZTllZWRiMTQyMjU=|9d01d33a58a3d825525516faf31af3e33b0cf62a023f4dca55efa56c021b1245"; expires=Thu, 02 Jul 2020 09:17:41 GMT; HttpOnly; Path=/services', 'Set-Cookie': 'jupyterhub-session-id=498d51f8ffd84710bb58bf64aa3569a0; HttpOnly; Path=/', 'Set-Cookie': 'jupyterhub-hub-login="2|1:0|10:1591089461|20:jupyterhub-hub-login|44:NGMzMjJhOTBiMmM4NDVjY2EwNTlkZTllZWRiMTQyMjU=|9f8c277e2d8474c7afe49d1a66790932550d20e24d2c085668740fb6bb4ca9a8"; expires=Thu, 02 Jul 2020 09:17:41 GMT; HttpOnly; Path=/hub/', 'Connection': 'close')>
+2020-06-03 15:53:40,008- user - INFO - Loggin Sucessful for: user-1 
+2020-06-03 15:53:40,008- user - DEBUG - User State is: States.LOGGED_IN
+2020-06-03 15:53:40,025- user - DEBUG - Login Response is <bound method ClientResponse.text of <ClientResponse(http://localhost:9000/hub/login) [302 Found]>
+<CIMultiDictProxy('Server': 'TornadoServer/6.0.4', 'Content-Type': 'text/html', 'Date': 'Wed, 03 Jun 2020 10:08:40 GMT', 'x-jupyterhub-version': '1.2.0dev', 'Access-Control-Allow-Headers': 'accept, content-type, authorization', 'content-security-policy': "frame-ancestors 'self'; report-uri /hub/security/csp-report", 'Location': '/user/user-2/', 'Content-Length': '0', 'Set-Cookie': 'jupyterhub-services="2|1:0|10:1591178920|19:jupyterhub-services|44:YzQ2NmYxMDM4MWIwNDBkNWI4NzZiYzY3YmEyMWQ4ZWM=|a510c89292149f5cbbd58d37aab66d3bac42b70b069a8278078f55d17b33acff"; expires=Fri, 03 Jul 2020 10:08:40 GMT; HttpOnly; Path=/services', 'Set-Cookie': 'jupyterhub-session-id=fd62d97ad7084d948be987ad346c5cd2; HttpOnly; Path=/', 'Set-Cookie': 'jupyterhub-hub-login="2|1:0|10:1591178920|20:jupyterhub-hub-login|44:YzQ2NmYxMDM4MWIwNDBkNWI4NzZiYzY3YmEyMWQ4ZWM=|5baee877481c52e4d9b1953bdecf812d46ac1991fe8e547f0a329776b5d464f0"; expires=Fri, 03 Jul 2020 10:08:40 GMT; HttpOnly; Path=/hub/', 'Connection': 'close')>
 >
-2020-06-02 15:02:41,388- user - INFO - Loggin Sucessful for: user-1 
-2020-06-02 15:02:41,388- user - DEBUG - User State is: States.LOGGED_IN
-2020-06-02 15:02:42,410- user - DEBUG - Respose url is http://localhost:9000/hub/spawn-pending/user-2
-2020-06-02 15:02:42,410- user - CRITICAL - !!!!!!!! Starting the server again!!!!!!!! for - user-2
-2020-06-02 15:02:42,463- user - DEBUG - Respose url is http://localhost:9000/hub/spawn-pending/user-1
-2020-06-02 15:02:42,463- user - CRITICAL - !!!!!!!! Starting the server again!!!!!!!! for - user-1
-2020-06-02 15:02:52,594- user - DEBUG - Respose url is http://localhost:9000/user/user-2/tree
-2020-06-02 15:02:52,594- user - DEBUG - Started Server Response is for user - user-2 is <bound method ClientResponse.text of <ClientResponse(http://localhost:9000/user/user-2/tree) [200 OK]>
-<CIMultiDictProxy('Server': 'TornadoServer/6.0.4', 'Content-Type': 'text/html; charset=UTF-8', 'Date': 'Tue, 02 Jun 2020 09:17:52 GMT', 'x-content-type-options': 'nosniff', 'x-jupyterhub-version': '1.1.0', 'content-security-policy': "frame-ancestors 'self';report-uri /hub/security/csp-report", 'Etag': '"3bf6c35c3972e1e6aa8bce0ffcee849aa9492728"', 'Content-Length': '17124', 'Set-Cookie': '_xsrf=2|b957633e|f50e8ae99c001d29205ea851fca34dba|1591089472; expires=Thu, 02 Jul 2020 09:17:52 GMT; Path=/', 'Connection': 'close')>
+2020-06-03 15:53:40,025- user - INFO - Loggin Sucessful for: user-2 
+2020-06-03 15:53:40,025- user - DEBUG - User State is: States.LOGGED_IN
+2020-06-03 15:53:40,263- user - DEBUG - Respose url is http://localhost:9000/user/user-2/tree
+2020-06-03 15:53:40,263- user - DEBUG - Started Server Response is for user - user-2 is <bound method ClientResponse.text of <ClientResponse(http://localhost:9000/user/user-2/tree) [200 OK]>
+<CIMultiDictProxy('Server': 'TornadoServer/6.0.4', 'Content-Type': 'text/html; charset=UTF-8', 'Date': 'Wed, 03 Jun 2020 10:08:40 GMT', 'x-content-type-options': 'nosniff', 'x-jupyterhub-version': '1.1.0', 'content-security-policy': "frame-ancestors 'self';report-uri /hub/security/csp-report", 'Etag': '"e218df9001721f75ee38b2ff9a394fad9f491869"', 'Content-Length': '17124', 'Set-Cookie': '_xsrf=2|db57891d|af3ca956f7a713d2a20055e711566678|1591178920; expires=Fri, 03 Jul 2020 10:08:40 GMT; Path=/', 'Connection': 'close')>
 >
-2020-06-02 15:02:52,594- user - INFO - Server started for: user-2 
-2020-06-02 15:02:52,594- user - DEBUG - User State is: States.SERVER_STARTED
-2020-06-02 15:02:52,630- user - INFO - Kernal started for: user-2
-2020-06-02 15:02:52,630- user - INFO - Code executed for: user-2
-2020-06-02 15:02:52,630- user - DEBUG - User State is: States.CODE_EXECUTED
-2020-06-02 15:02:52,763- user - DEBUG - Respose url is http://localhost:9000/user/user-1/tree
-2020-06-02 15:02:52,764- user - DEBUG - Started Server Response is for user - user-1 is <bound method ClientResponse.text of <ClientResponse(http://localhost:9000/user/user-1/tree) [200 OK]>
-<CIMultiDictProxy('Server': 'TornadoServer/6.0.4', 'Content-Type': 'text/html; charset=UTF-8', 'Date': 'Tue, 02 Jun 2020 09:17:52 GMT', 'x-content-type-options': 'nosniff', 'x-jupyterhub-version': '1.1.0', 'content-security-policy': "frame-ancestors 'self';report-uri /hub/security/csp-report", 'Etag': '"1c12a7a0a9e759d58361e807a2a1f440ad101c26"', 'Content-Length': '17124', 'Set-Cookie': '_xsrf=2|3dd0647f|585bc6417d9489c7907979720c1a82a1|1591089472; expires=Thu, 02 Jul 2020 09:17:52 GMT; Path=/', 'Connection': 'close')>
+2020-06-03 15:53:40,263- user - INFO - Server started for: user-2 
+2020-06-03 15:53:40,263- user - DEBUG - User State is: States.SERVER_STARTED
+2020-06-03 15:53:40,290- user - INFO - Kernal started for: user-2
+2020-06-03 15:53:40,575- traitlets - DEBUG - Starting kernel: ['/home/fm-pc-lt-145/Workspace/devops-workspace/advanced-python/load-testing/loadtest_env/bin/python', '-m', 'ipykernel_launcher', '-f', '/tmp/tmpeflwcagd.json', '--HistoryManager.hist_file=:memory:']
+2020-06-03 15:53:40,579- traitlets - DEBUG - Connecting to: tcp://127.0.0.1:49959
+2020-06-03 15:53:40,582- traitlets - DEBUG - connecting shell channel to tcp://127.0.0.1:51531
+2020-06-03 15:53:40,583- traitlets - DEBUG - Connecting to: tcp://127.0.0.1:51531
+2020-06-03 15:53:40,584- traitlets - DEBUG - connecting iopub channel to tcp://127.0.0.1:56275
+2020-06-03 15:53:40,584- traitlets - DEBUG - Connecting to: tcp://127.0.0.1:56275
+2020-06-03 15:53:40,584- traitlets - DEBUG - connecting stdin channel to tcp://127.0.0.1:41667
+2020-06-03 15:53:40,584- traitlets - DEBUG - Connecting to: tcp://127.0.0.1:41667
+2020-06-03 15:53:40,584- traitlets - DEBUG - connecting heartbeat channel to tcp://127.0.0.1:34739
+2020-06-03 15:53:40,585- traitlets - DEBUG - connecting control channel to tcp://127.0.0.1:49959
+2020-06-03 15:53:40,585- traitlets - DEBUG - Connecting to: tcp://127.0.0.1:49959
+2020-06-03 15:53:41,212- traitlets - INFO - Executing notebook with kernel: python2
+2020-06-03 15:53:41,213- traitlets - DEBUG - Executing cell:
+x = 1
+y = 2
+z= x+y
+2020-06-03 15:53:41,218- traitlets - DEBUG - msg_type: status
+2020-06-03 15:53:41,218- traitlets - DEBUG - content: {'execution_state': 'busy'}
+2020-06-03 15:53:41,218- traitlets - DEBUG - msg_type: execute_input
+2020-06-03 15:53:41,219- traitlets - DEBUG - content: {'code': 'x = 1\ny = 2\nz= x+y', 'execution_count': 1}
+2020-06-03 15:53:41,219- traitlets - DEBUG - msg_type: status
+2020-06-03 15:53:41,219- traitlets - DEBUG - content: {'execution_state': 'idle'}
+2020-06-03 15:53:41,220- traitlets - DEBUG - Executing cell:
+print("Sum is: ",z)
+2020-06-03 15:53:41,225- traitlets - DEBUG - msg_type: status
+2020-06-03 15:53:41,225- traitlets - DEBUG - content: {'execution_state': 'busy'}
+2020-06-03 15:53:41,225- traitlets - DEBUG - msg_type: execute_input
+2020-06-03 15:53:41,225- traitlets - DEBUG - content: {'code': 'print("Sum is: ",z)', 'execution_count': 2}
+2020-06-03 15:53:41,225- traitlets - DEBUG - msg_type: stream
+2020-06-03 15:53:41,226- traitlets - DEBUG - content: {'name': 'stdout', 'text': 'Sum is:  3\n'}
+2020-06-03 15:53:41,228- traitlets - DEBUG - msg_type: status
+2020-06-03 15:53:41,228- traitlets - DEBUG - content: {'execution_state': 'idle'}
+2020-06-03 15:53:41,434- user - INFO - From .ipynb file Code executed for: user-2
+2020-06-03 15:53:41,435- user - DEBUG - Respose url is http://localhost:9000/user/user-1/tree
+2020-06-03 15:53:41,435- user - DEBUG - Started Server Response is for user - user-1 is <bound method ClientResponse.text of <ClientResponse(http://localhost:9000/user/user-1/tree) [200 OK]>
+<CIMultiDictProxy('Server': 'TornadoServer/6.0.4', 'Content-Type': 'text/html; charset=UTF-8', 'Date': 'Wed, 03 Jun 2020 10:08:40 GMT', 'x-content-type-options': 'nosniff', 'x-jupyterhub-version': '1.1.0', 'content-security-policy': "frame-ancestors 'self';report-uri /hub/security/csp-report", 'Etag': '"2ab30dcc08933a560298943ef663206b496d5626"', 'Content-Length': '17124', 'Set-Cookie': '_xsrf=2|2dee1fc6|38ec69862f8becf63f65586a153da78e|1591178920; expires=Fri, 03 Jul 2020 10:08:40 GMT; Path=/', 'Connection': 'close')>
 >
-2020-06-02 15:02:52,764- user - INFO - Server started for: user-1 
-2020-06-02 15:02:52,764- user - DEBUG - User State is: States.SERVER_STARTED
-2020-06-02 15:02:52,794- user - INFO - Kernal started for: user-1
-2020-06-02 15:02:52,794- user - INFO - Code executed for: user-1
-2020-06-02 15:02:52,794- user - DEBUG - User State is: States.CODE_EXECUTED
-2020-06-02 15:02:53,250- user - DEBUG - Kernal Stopped response: <bound method ClientResponse.text of <ClientResponse(http://localhost:9000/user/user-2/api/kernels/518b833e-066b-4b4a-b376-3fe23317eaa9) [204 No Content]>
-<CIMultiDictProxy('Server': 'TornadoServer/6.0.4', 'Date': 'Tue, 02 Jun 2020 09:17:52 GMT', 'x-content-type-options': 'nosniff', 'x-jupyterhub-version': '1.1.0', 'content-security-policy': "frame-ancestors 'self';report-uri /hub/security/csp-report; default-src 'none'", 'Connection': 'close')>
->
-2020-06-02 15:02:53,250- user - INFO - Kernal stopped for: user-2
-2020-06-02 15:02:53,250- user - DEBUG - User State is: States.KERNAL_STOPPED
-2020-06-02 15:02:53,420- user - DEBUG - Kernal Stopped response: <bound method ClientResponse.text of <ClientResponse(http://localhost:9000/user/user-1/api/kernels/480c5720-38be-4395-9871-cdf28f704949) [204 No Content]>
-<CIMultiDictProxy('Server': 'TornadoServer/6.0.4', 'Date': 'Tue, 02 Jun 2020 09:17:52 GMT', 'x-content-type-options': 'nosniff', 'x-jupyterhub-version': '1.1.0', 'content-security-policy': "frame-ancestors 'self';report-uri /hub/security/csp-report; default-src 'none'", 'Connection': 'close')>
->
-2020-06-02 15:02:53,420- user - INFO - Kernal stopped for: user-1
-2020-06-02 15:02:53,421- user - DEBUG - User State is: States.KERNAL_STOPPED
-2020-06-02 15:03:03,264- user - DEBUG - Server is taking a while to stop gracefully for - user-2
-2020-06-02 15:03:03,264- user - DEBUG - User State is: States.CLEAR
-2020-06-02 15:03:03,264- user - INFO - Server Stopped for: user-2
-2020-06-02 15:03:03,437- user - DEBUG - Server is taking a while to stop gracefully for - user-1
-2020-06-02 15:03:03,437- user - DEBUG - User State is: States.CLEAR
-2020-06-02 15:03:03,437- user - INFO - Server Stopped for: user-1
-2020-06-02 15:03:03,437- __main__ - INFO - *************** Stopping the Jupyterhub Loadtesting ****************
+2020-06-03 15:53:41,435- user - INFO - Server started for: user-1 
+2020-06-03 15:53:41,435- user - DEBUG - User State is: States.SERVER_STARTED
+2020-06-03 15:53:41,460- user - INFO - Kernal started for: user-1
+2020-06-03 15:53:41,465- traitlets - DEBUG - Starting kernel: ['/home/fm-pc-lt-145/Workspace/devops-workspace/advanced-python/load-testing/loadtest_env/bin/python', '-m', 'ipykernel_launcher', '-f', '/tmp/tmprxdg0y5n.json', '--HistoryManager.hist_file=:memory:']
+2020-06-03 15:53:41,470- traitlets - DEBUG - Connecting to: tcp://127.0.0.1:41487
+2020-06-03 15:53:41,472- traitlets - DEBUG - connecting shell channel to tcp://127.0.0.1:45355
+2020-06-03 15:53:41,473- traitlets - DEBUG - Connecting to: tcp://127.0.0.1:45355
+2020-06-03 15:53:41,473- traitlets - DEBUG - connecting iopub channel to tcp://127.0.0.1:46701
+2020-06-03 15:53:41,473- traitlets - DEBUG - Connecting to: tcp://127.0.0.1:46701
+2020-06-03 15:53:41,473- traitlets - DEBUG - connecting stdin channel to tcp://127.0.0.1:59903
+2020-06-03 15:53:41,473- traitlets - DEBUG - Connecting to: tcp://127.0.0.1:59903
+2020-06-03 15:53:41,474- traitlets - DEBUG - connecting heartbeat channel to tcp://127.0.0.1:56473
+2020-06-03 15:53:41,474- traitlets - DEBUG - connecting control channel to tcp://127.0.0.1:41487
+2020-06-03 15:53:41,474- traitlets - DEBUG - Connecting to: tcp://127.0.0.1:41487
+2020-06-03 15:53:42,101- traitlets - INFO - Executing notebook with kernel: python2
+2020-06-03 15:53:42,102- traitlets - DEBUG - Executing cell:
+x = 1
+y = 2
+z= x+y
+2020-06-03 15:53:42,107- traitlets - DEBUG - msg_type: status
+2020-06-03 15:53:42,107- traitlets - DEBUG - content: {'execution_state': 'busy'}
+2020-06-03 15:53:42,107- traitlets - DEBUG - msg_type: execute_input
+2020-06-03 15:53:42,107- traitlets - DEBUG - content: {'code': 'x = 1\ny = 2\nz= x+y', 'execution_count': 1}
+2020-06-03 15:53:42,108- traitlets - DEBUG - msg_type: status
+2020-06-03 15:53:42,108- traitlets - DEBUG - content: {'execution_state': 'idle'}
+2020-06-03 15:53:42,108- traitlets - DEBUG - Executing cell:
+print("Sum is: ",z)
+2020-06-03 15:53:42,114- traitlets - DEBUG - msg_type: status
+2020-06-03 15:53:42,114- traitlets - DEBUG - content: {'execution_state': 'busy'}
+2020-06-03 15:53:42,115- traitlets - DEBUG - msg_type: execute_input
+2020-06-03 15:53:42,115- traitlets - DEBUG - content: {'code': 'print("Sum is: ",z)', 'execution_count': 2}
+2020-06-03 15:53:42,115- traitlets - DEBUG - msg_type: stream
+2020-06-03 15:53:42,115- traitlets - DEBUG - content: {'name': 'stdout', 'text': 'Sum is:  3\n'}
+2020-06-03 15:53:42,116- traitlets - DEBUG - msg_type: status
+2020-06-03 15:53:42,116- traitlets - DEBUG - content: {'execution_state': 'idle'}
+2020-06-03 15:53:42,424- user - INFO - From .ipynb file Code executed for: user-1
+2020-06-03 15:53:42,425- __main__ - INFO - *************** Stopping the Jupyterhub Loadtesting ****************

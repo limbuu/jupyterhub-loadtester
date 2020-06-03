@@ -32,7 +32,7 @@ if __name__=='__main__':
     parser.add_argument("user_count",  help="this is number of users for simulating in load testing environment", type=int)
     args = parser.parse_args()
     if args.user_count <= 0:
-        raise SimulationValueError
+        raise SimulationValueError  
     main(args.hub_url, args.user_count)
     logger.info('*************** Stopping the Jupyterhub Loadtesting ****************')
 

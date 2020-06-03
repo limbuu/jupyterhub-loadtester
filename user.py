@@ -9,6 +9,15 @@ import logging.config
 logging.config.fileConfig(fname='logger.conf', disable_existing_loggers=False)
 logger = logging.getLogger(__name__)
 from exception import LoginException, LoginRedirectError, ServerSpawnError, KernelStartError, KernelStopError, ServerStopError
+import uuid
+import random
+# for code execution
+import os
+import nbformat
+from nbconvert.preprocessors import ExecutePreprocessor
+class OperationError(Exception):
+    pass
+
 class User:
     class States(Enum):
         CLEAR = 1
@@ -113,6 +122,25 @@ class User:
         self.state = User.States.CODE_EXECUTED
         logger.info('Code executed for: {}'.format(self.username))
 
+    async def execute_code_from_ipynbfile(self):
+        ## TO DO : if loadtester wants to execute xyz.ipynb file
+        ## 1) simeple code (small cpu and ram), average (average cpu and ram), complex(high cpu and ram)
+        ## 2) particularly works for .ipynb file
+        ## 3) Future: UI?UX to upload desired notebooks and execute them
+        runnable_notebook_dir = os.getcwd() + '/notebooks/runnable/'
+        executed_notebook_dir = os.getcwd() + '/notebooks/executed/'
+        runnable_notebook_files = os.listdir('./notebooks/runnable')
+        for notebook_file in runnable_notebook_files:
+            with open(runnable_notebook_dir+notebook_file) as f:
+                nb = nbformat.read(f, as_version=4)
+                ep = ExecutePreprocessor(timeout=600)
+                ep.preprocess(nb, {'metadata': {'path': runnable_notebook_dir}})
+            executed_file = 'executed_'+notebook_file.split('_')[1]
+            with open(executed_notebook_dir+executed_file, 'w', encoding='utf-8') as f:
+                nbformat.write(nb, f)
+        self.state = User.States.CODE_EXECUTED
+        logger.info('From .ipynb file Code executed for: {}'.format(self.username))
+
     async def stop_kernel(self):
         assert self.state == User.States.CODE_EXECUTED
         logger.debug('User State is: {}'.format(self.state))
@@ -145,3 +173,4 @@ class User:
         self.state = User.States.CLEAR
         logger.debug('User State is: {}'.format(self.state))
         logger.info('Server Stopped for: {}'.format(self.username))
+        
