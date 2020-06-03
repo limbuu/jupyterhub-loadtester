@@ -81,7 +81,7 @@ class MessageTypeError(Error):
     def __str__(self):
         return f'{self.message} -> {self.username}'
 class CodeExecutionError(Error):
-    ''' Raise Code Execution Error when request send to ws connection to execute code through channels '''
+    ''' Raise Code Execution Error when request send to ws connection to execute code through channels gives unexpected error'''
     def __init__(self, username):
         self.username = username
         self.message = "WebSocket: Code Execution Error for"
