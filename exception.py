@@ -72,3 +72,18 @@ class SimulationValueError(Error):
         self.message = "The numbers of users for simulation should be greater or at least euqual to 1"
     def __str__(self):
         return f'{self.message}'
+
+class MessageTypeError(Error):
+    ''' Raise Message Type Error when expected message from ws connection is other than  '''
+    def __init__(self, username):
+        self.username = username
+        self.message = "WebSocket: Unexpected Message Type for"
+    def __str__(self):
+        return f'{self.message} -> {self.username}'
+class CodeExecutionError(Error):
+    ''' Raise Code Execution Error when request send to ws connection to execute code through channels '''
+    def __init__(self, username):
+        self.username = username
+        self.message = "WebSocket: Code Execution Error for"
+    def __str__(self):
+        return f'{self.message} -> {self.username}'

@@ -8,15 +8,13 @@ import logging
 import logging.config
 logging.config.fileConfig(fname='logger.conf', disable_existing_loggers=False)
 logger = logging.getLogger(__name__)
-from exception import LoginException, LoginRedirectError, ServerSpawnError, KernelStartError, KernelStopError, ServerStopError
+from exception import LoginException, LoginRedirectError, ServerSpawnError, KernelStartError, KernelStopError, ServerStopError, MessageTypeError, CodeExecutionError
 import uuid
 import random
 # for code execution
 import os
 import nbformat
 from nbconvert.preprocessors import ExecutePreprocessor
-class OperationError(Exception):
-    pass
 
 class User:
     class States(Enum):
@@ -113,20 +111,64 @@ class User:
         xsrf_token = notebook_cookies['_xsrf'].value
         return xsrf_token
 
-    async def execute_code(self):
-        assert self.state == User.States.KERNEL_STARTED
+    def send_execute_request(self):
+        return {
+            "header": {
+                "msg_id": uuid.uuid1().hex,
+                "username": self.username,
+                "msg_type": "execute_request",
+                "version": "5.2"
+            },
+            "metadata": {},
+            "content": {
+                "code": "200*1000",
+                "silent": False,
+                "store_history": True,
+                "user_expressions": {},
+                "allow_stdin": True,
+                "stop_on_error": True
+            },
+            "buffers": [],
+            "parent_header": {},
+            "channel": "shell"
+        }
+        
+    async def execute_simple_code(self):            
         ## TO DO
         ## 1) simple code that consumes less cpu and ram
         ## 2) code that consumes average cpu and ram
         ## 3) code that consumes high cpu and ram
-        self.state = User.States.CODE_EXECUTED
-        logger.info('Code executed for: {}'.format(self.username))
+        assert self.state == User.States.KERNEL_STARTED
+        logger.debug('User State is: {}'.format(self.state))
+        self.channel_url = self.kernel_url+'/'+self.kernel_id+'/channels'
+        logger.info('Started Connecting kernel through WebSocket for - {}'.format(self.username))
+        print('Channel Url is : {}'.format(self.channel_url))
+        async with self.session.ws_connect(self.channel_url) as ws:
+                try:
+                    logger.info('Sending request to execute code for - {}'.format(self.username))
+                    await ws.send_json(self.send_execute_request())
+                except Exception:
+                    logger.error(" Error occured while sending code execute request through web socket connection for - {}".format(self.username))
+                    raise CodeExecutionError(self.username)
+                async for msg_text in ws:
+                    if msg_text.type == aiohttp.WSMsgType.TEXT:
+                        ## TO DO check for stream and other
+                        print("Executed Code Message response: ", msg_text.json())
+                        self.state = User.States.CODE_EXECUTED
+                        logger.info('Simple Code executed for: {}'.format(self.username))
+                        break
+                    elif msg_text.type == aiohttp.WSMsgType.CLOSED:
+                        raise MessageTypeError(self.username)
+                    elif msg_text.type == aiohttp.WSMsgType.ERROR:
+                        raise MessageTypeError(self.username)
 
     async def execute_code_from_ipynbfile(self):
         ## TO DO : if loadtester wants to execute xyz.ipynb file
         ## 1) simeple code (small cpu and ram), average (average cpu and ram), complex(high cpu and ram)
         ## 2) particularly works for .ipynb file
         ## 3) Future: UI?UX to upload desired notebooks and execute them
+        assert self.state == User.States.KERNEL_STARTED
+        logger.debug('User State is: {}'.format(self.state))
         runnable_notebook_dir = os.getcwd() + '/notebooks/runnable/'
         executed_notebook_dir = os.getcwd() + '/notebooks/executed/'
         runnable_notebook_files = os.listdir('./notebooks/runnable')
@@ -173,4 +215,3 @@ class User:
         self.state = User.States.CLEAR
         logger.debug('User State is: {}'.format(self.state))
         logger.info('Server Stopped for: {}'.format(self.username))
-        

@@ -13,8 +13,8 @@ async def simulate_user(hub_url, username):
             await u.login_user()
             await u.start_server()
             await u.start_kernel()
-            await u.execute_code()
-            await u.execute_code_from_ipynbfile()
+            await u.execute_simple_code()
+            #await u.execute_code_from_ipynbfile()
         except:
             raise ServerSetupError(username)
         finally:
